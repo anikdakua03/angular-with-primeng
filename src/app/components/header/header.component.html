@@ -1,0 +1,20 @@
+<div class="card">
+    <p-toolbar>
+        <ng-template pTemplate="start">
+            <button pButton icon="pi pi-plus" routerLink="" class="mr-2" text severity="secondary">Home</button>
+        </ng-template>
+
+        <ng-template pTemplate="center">
+            <input pInputText id="over_label" autocomplete="off" placeholder="Search" />
+        </ng-template>
+
+        <ng-template pTemplate="end">
+            <form [formGroup]="themeGroup" class="card flex justify-center">
+                <p-select formControlName="selectedTheme" [options]="themesMenu" optionLabel="value"
+                    placeholder="Select a Theme" class="w-full md:w-56" (onChange)="onToggleTheme()" />
+            </form>
+
+            <p-splitbutton label="Save" [model]="items" />
+        </ng-template>
+    </p-toolbar>
+</div>
