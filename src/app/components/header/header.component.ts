@@ -4,11 +4,14 @@ import { MenuItem } from 'primeng/api';
 import { ThemeService } from '../../services/theme.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { SidebarComponent } from "../sidebar/sidebar.component";
+import { NotificationsService } from '../../services/notifications.service';
+// import { AppConfiguratorComponent } from "../app-configurator/app-configurator.component";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [PrimeNgModule, ReactiveFormsModule, RouterLink],
+  imports: [PrimeNgModule, ReactiveFormsModule, RouterLink, SidebarComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -19,6 +22,10 @@ export class HeaderComponent implements OnInit {
     {
       id: "Aura",
       value: "Aura"
+    },
+    {
+      id: "Material",
+      value: "Material"
     },
     {
       id: "Lara",
@@ -32,7 +39,10 @@ export class HeaderComponent implements OnInit {
 
   themeGroup!: FormGroup;
 
-  constructor(private themeService: ThemeService) {
+  notificationPanelVisible: boolean = false;
+
+
+  constructor(private themeService: ThemeService, public notification: NotificationsService) {
     this.themeGroup = new FormGroup({
       selectedTheme: new FormControl<string>("", Validators.required)
     });
@@ -52,7 +62,20 @@ export class HeaderComponent implements OnInit {
   }
 
   onToggleTheme() {
-    // const theme = this.themeGroup.value.selectedTheme.id ?? "Aura";
-    // this.themeService.toggleTheme(theme);
+    const theme = this.themeGroup.value.selectedTheme.id ?? "Aura";
+  }
+
+  toggleDarkMode() {
+    const element = document.querySelector('html');
+
+    if (element === null) {
+      return;
+    }
+
+    element.classList.toggle('my-app-dark');
+  }
+
+  toggleNotification() {
+    this.notificationPanelVisible = true;
   }
 }

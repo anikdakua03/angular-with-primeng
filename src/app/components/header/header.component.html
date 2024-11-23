@@ -6,9 +6,37 @@
 
         <ng-template pTemplate="center">
             <input pInputText id="over_label" autocomplete="off" placeholder="Search" />
+            <p-button rounded="true" [text]="true" severity="info" (onClick)="toggleDarkMode()">
+            
+                <span class="material-icons">
+                    dark_mode
+                </span>
+            </p-button>
+            <p-button rounded="true" [text]="true" severity="info" (onClick)="toggleDarkMode()">
+            
+                <span class="material-icons">
+                    light_mode
+                </span>
+            </p-button>
         </ng-template>
 
         <ng-template pTemplate="end">
+            <!-- <app-configurator /> -->
+            <!-- <p-button [severity]="'info'" (click)="toggleNotification()"> -->
+            <div pButton rounded="true" [text]="true" severity="info" (click)="toggleNotification()" style="margin-right: 2rem;">
+                <div class="card flex justify-center">
+                    <!-- <i class="material-icons" pBadge [value]="2456" severity="info">notifications</i> -->
+                    <!-- <span class="material-icons">
+                                                                                                                                                                                                                                    notifications
+                                                                                                                                                                                                                                </span> -->
+            
+                    <p-overlaybadge [value]="notification.allNotifications().length" badgeSize="small" severity="info">
+                        <i class="material-icons" style="font-size: 2rem">notifications</i>
+                    </p-overlaybadge>
+                </div>
+            </div>
+            <!-- </p-button> -->
+
             <form [formGroup]="themeGroup" class="card flex justify-center">
                 <p-select formControlName="selectedTheme" [options]="themesMenu" optionLabel="value"
                     placeholder="Select a Theme" class="w-full md:w-56" (onChange)="onToggleTheme()" />
@@ -18,3 +46,4 @@
         </ng-template>
     </p-toolbar>
 </div>
+<app-sidebar [visible]="notificationPanelVisible" />

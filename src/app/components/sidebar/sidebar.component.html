@@ -1,0 +1,20 @@
+<p>Click to see notifications...</p>
+<div class="card flex justify-center">
+    <p-sidebar [(visible)]="visible" header="Drawer" position="right" closeOnEscape="true">
+        <p>
+            @for(notification of notificationService.allNotifications() ; track $index)
+            {
+        <ul>
+            <li>{{$index + 1}} => {{notification}}</li>
+        </ul>
+        }
+        </p>
+    </p-sidebar>
+</div>
+<!-- <span class="material-icons">
+    notifications_active
+</span>
+
+<span class="material-icons">
+    chevron_right
+</span> -->

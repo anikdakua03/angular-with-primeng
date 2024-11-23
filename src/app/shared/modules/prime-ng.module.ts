@@ -10,18 +10,29 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { IconFieldModule } from 'primeng/iconfield';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { InputIconModule } from 'primeng/inputicon';
-import { SelectModule } from 'primeng/select';
+import { Select, SelectModule } from 'primeng/select';
 import { InputTextModule } from 'primeng/inputtext';
-
-
+import { DropdownModule } from 'primeng/dropdown';
+import { SidebarModule } from 'primeng/sidebar';
+import { SelectButton } from 'primeng/selectbutton';
+import { ToggleSwitch } from 'primeng/toggleswitch';
+import { BadgeModule } from 'primeng/badge';
+import { OverlayBadgeModule } from 'primeng/overlaybadge';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
+    Select,
+    SelectButton,
+    ToggleSwitch,
   ],
   exports: [
-    ButtonModule, TableModule, CardModule, FloatLabelModule, ToastModule, TabsModule, ToolbarModule, IconFieldModule, SplitButtonModule, InputIconModule, SelectModule, InputTextModule
+    CommonModule,
+    ButtonModule, TableModule, CardModule, FloatLabelModule, ToastModule, TabsModule, ToolbarModule, IconFieldModule, SplitButtonModule, InputIconModule, SelectModule, SelectButton, InputTextModule, ToggleSwitch, BadgeModule, OverlayBadgeModule,
+    // Deprecated
+    SidebarModule,
+    DropdownModule
   ]
 })
 export class PrimeNgModule { }

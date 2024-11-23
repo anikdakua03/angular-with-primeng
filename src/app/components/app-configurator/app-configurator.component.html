@@ -1,0 +1,35 @@
+<!-- <div class="config-panel-content">
+    <div class="config-panel-colors">
+        <span class="config-panel-label">Primary</span>
+        <div>
+            @for (primaryColor of primaryColors(); track primaryColor) {
+            <button type="button" [title]="primaryColor.name" (click)="updateColors($event, 'primary', primaryColor)"
+                [ngClass]="{ 'active-color': primaryColor.name === selectedPrimaryColor() }" [style]="{
+                                'background-color': primaryColor.name === 'noir' ? 'var(--text-color)' : primaryColors !== undefined && (primaryColor !== undefined && primaryColor.palette['500'])
+                            }"></button>
+            }
+        </div>
+    </div>
+
+    <div class="config-panel-colors">
+        <span class="config-panel-label">Surface</span>
+        <div>
+            @for (surface of surfaces; track surface) {
+            <button type="button" [title]="surface.name" (click)="updateColors($event, 'surface', surface)"
+                [ngClass]="{ 'active-color': surface.name === selectedSurfaceColor() }" [style]="{
+                                'background-color': surface.name === 'noir' ? 'var(--text-color)' : surface?.palette['500']
+                            }"></button>
+            }
+        </div>
+    </div>
+
+    <div class="config-panel-settings">
+        <span class="config-panel-label">Presets</span>
+        <p-selectbutton [options]="presets" [ngModel]="selectedPreset()" (ngModelChange)="onPresetChange($event)"
+            [allowEmpty]="false" size="small" />
+    </div>
+    <div class="config-panel-settings">
+        <span class="config-panel-label">Ripple</span>
+        <p-toggleSwitch [(ngModel)]="ripple" />
+    </div>
+</div> -->
