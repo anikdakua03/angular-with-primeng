@@ -17,14 +17,13 @@ const presets = {
 };
 
 @Component({
-  selector: 'app-configurator',
-  standalone: true,
-  imports: [PrimeNgModule, NgClass],
-  host: {
-    class: 'config-panel hidden'
-  },
-  templateUrl: './app-configurator.component.html',
-  styleUrl: './app-configurator.component.scss'
+    selector: 'app-configurator',
+    imports: [PrimeNgModule, NgClass],
+    host: {
+        class: 'config-panel hidden'
+    },
+    templateUrl: './app-configurator.component.html',
+    styleUrl: './app-configurator.component.scss'
 })
 export class AppConfiguratorComponent {
 

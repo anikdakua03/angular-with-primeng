@@ -1,37 +1,17 @@
 import { Injectable, OnInit } from '@angular/core';
-// import { UserResource, OrganizationResource, ActiveSessionResource, ClientResource } from "@clerk/types"
-// import { ReplaySubject } from 'rxjs';
+import { Clerk } from "@clerk/clerk-js";
 import { BaseTheme, Elements, Layout, SignInProps, SignInTheme, Variables } from '@clerk/types';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClerkAuthService implements OnInit {
 
-  // public readonly clerk$: ReplaySubject<HeadlessBrowserClerk | BrowserClerk> = new ReplaySubject(1);
-  // public readonly client$: ReplaySubject<ClientResource | undefined> = new ReplaySubject(1);
-  // public readonly session$: ReplaySubject<ActiveSessionResource | undefined | null> = new ReplaySubject(1);
-  // public readonly user$: ReplaySubject<UserResource | undefined | null> = new ReplaySubject(1);
-  // public readonly organization$: ReplaySubject<OrganizationResource | undefined | null> = new ReplaySubject(1);
 
+  key = "pk_test_cHJpbWFyeS13aWxkY2F0LTM1LmNsZXJrLmFjY291bnRzLmRldiQ";
 
-  // options: ClerkOptions = {
-  //   apiUrl: "",
-  //   apiVersion: "",
-  //   audience: "",
-  //   domain: "",
-  //   isSatellite: false,
-  //   jwtKey: "",
-  //   proxyUrl: "",
-  //   publishableKey: "",
-  //   sdkMetadata: undefined,
-  //   secretKey: "",
-  //   telemetry: undefined,
-  //   userAgent: "",
-  // };
-
-  // newCl = createClerkClient(this.options);
-  // await clerk.load();
+  clerk = new Clerk(this.key);
 
   baseTheme: BaseTheme = {
     __type: 'prebuilt_appearance'
@@ -57,17 +37,37 @@ export class ClerkAuthService implements OnInit {
 
 
   constructor() {
-
+    this.initializeClerk();
   }
 
   ngOnInit(): void {
   }
 
-  initializeClerk() {
-
+  async initializeClerk() {
+    await this.clerk.load({
+      // Set load options here
+    });
   }
 
   signIn() {
+    return this.clerk.openSignIn();
+  }
 
+  sign() {
+    return this.clerk.openSignUp({
+
+    });
+  }
+
+  google() {
+    return this.clerk.openGoogleOneTap();
+  }
+
+  openUserProfile() {
+    this.clerk.openUserProfile();
+  }
+
+  closeUserProfile() {
+    this.clerk.closeUserProfile();
   }
 }

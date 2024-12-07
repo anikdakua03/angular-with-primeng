@@ -1,10 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { PrimeNgModule } from '../../shared/modules/prime-ng.module';
 import { NotificationsService } from '../../services/notifications.service';
+import { PrimeNgModule } from '../../shared/modules/prime-ng.module';
 
 @Component({
   selector: 'app-sidebar',
-  standalone: true,
   imports: [PrimeNgModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'

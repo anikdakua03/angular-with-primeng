@@ -9,11 +9,10 @@ import { NotificationsService } from '../../services/notifications.service';
 // import { AppConfiguratorComponent } from "../app-configurator/app-configurator.component";
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [PrimeNgModule, ReactiveFormsModule, RouterLink, SidebarComponent],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+    selector: 'app-header',
+    imports: [PrimeNgModule, ReactiveFormsModule, RouterLink, SidebarComponent],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
   items: MenuItem[] | undefined;
