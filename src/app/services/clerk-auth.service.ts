@@ -9,7 +9,7 @@ import { BaseTheme, Elements, Layout, SignInProps, SignInTheme, Variables } from
 export class ClerkAuthService implements OnInit {
 
 
-  key = "pk_test_cHJpbWFyeS13aWxkY2F0LTM1LmNsZXJrLmFjY291bnRzLmRldiQ";
+  key = "";
 
   clerk = new Clerk(this.key);
 
