@@ -1,20 +1,88 @@
-<p>Click to see notifications...</p>
-<div class="card flex justify-center">
-    <p-sidebar [(visible)]="visible" header="Drawer" position="right" closeOnEscape="true">
-        <p>
-            @for(notification of notificationService.allNotifications() ; track $index)
-            {
-        <ul>
-            <li>{{$index + 1}} => {{notification}}</li>
-        </ul>
-        }
-        </p>
-    </p-sidebar>
-</div>
-<!-- <span class="material-icons">
-    notifications_active
-</span>
+<!-- <div class="card flex justify-center">
+  <p-drawer
+    [visible]="visible()"
+    (onHide)="closeSidebar()"
+    ariaCloseLabel="Close Sidebar"
+    header="Sidebar Menu"
+    position="left"
+    [fullScreen]="false"
+    closeOnEscape="true"
+  >
+    <ng-template #closeicon>
+      <span class="material-icons"> cancel </span>
+    </ng-template>
 
-<span class="material-icons">
-    chevron_right
-</span> -->
+    <div class="m-2 p-3 bg-red-500 hover:scale-x-105 cursor-pointer rounded-sm">
+      <a href="table">Table</a>
+    </div>
+    <div class="m-2 p-3 bg-blue-500 hover:scale-x-105 cursor-pointer rounded-sm">
+        <a href="form">Form </a>
+    </div>
+    <div class="m-2 p-3 bg-amber-500 hover:scale-x-105 cursor-pointer rounded-sm">
+        <a href="dialog">Dialog</a>
+    </div>
+    <div class="m-2 p-3 bg-orange-400 hover:scale-x-105 cursor-pointer rounded-sm">
+        <a href="tree">Tree</a>
+    </div>
+    <div class="m-2 p-3 bg-lime-600 hover:scale-x-105 cursor-pointer rounded-sm">
+        <a href="chart">Chart</a>
+    </div>
+  </p-drawer>
+</div> -->
+
+<!-- Without using prime ng components -->
+<div class="sidenav" [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''">
+  <div class="logo-container">
+    <button class="logo" (click)="toggleCollapse()">
+      <span class="material-icons">menu</span>
+    </button>
+
+    @if(isLeftSidebarCollapsed() === false)
+    {
+      <div class="logo-text">My App</div>
+  
+      <button class="btn-close" (click)="closeSidenav()">
+        <span class="material-icons">close</span>
+      </button>
+    }
+  </div>
+
+  <div class="sidenav-nav">
+    <li class="sidenav-nav-item">
+      <a class="sidenav-nav-link">
+        @if(isLeftSidebarCollapsed() === false)
+        {
+          <span class="sidenav-link-text">Navbar items 1</span>
+        }
+        <span class="material-icons sidenav-link-icon">home</span>
+      </a>
+    </li>
+    <li class="sidenav-nav-item">
+      <a class="sidenav-nav-link">
+        @if(isLeftSidebarCollapsed() === false)
+        {
+          <span class="sidenav-link-text">Navbar items 2</span>
+        }
+        <span class="material-icons sidenav-link-icon">home</span>
+      </a>
+    </li>
+    <li class="sidenav-nav-item">
+      <a class="sidenav-nav-link">
+        @if(isLeftSidebarCollapsed() === false)
+        {
+          <span class="sidenav-link-text">Navbar items 3</span>
+        }
+        <span class="material-icons sidenav-link-icon">home</span>
+      </a>
+    </li>
+    <li class="sidenav-nav-item">
+      <a class="sidenav-nav-link">
+        @if(isLeftSidebarCollapsed() === false)
+        {
+          <span class="sidenav-link-text">Navbar items 4</span>
+        }
+        <span class="material-icons sidenav-link-icon">home</span>
+      </a>
+    </li>
+  </div>
+</div>

@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { PrimeNgModule } from '../../shared/modules/prime-ng.module';
+import { Component, OnInit, signal } from '@angular/core';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { MenuItem } from 'primeng/api';
-import { ThemeService } from '../../services/theme.service';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
-import { SidebarComponent } from "../sidebar/sidebar.component";
+import { ButtonModule } from 'primeng/button';
+import { OverlayBadgeModule } from 'primeng/overlaybadge';
+import { TooltipModule } from 'primeng/tooltip';
+import { ClerkAuthService } from '../../services/clerk-auth/clerk-auth.service';
 import { NotificationsService } from '../../services/notifications.service';
-// import { AppConfiguratorComponent } from "../app-configurator/app-configurator.component";
+import { ThemeService } from '../../services/theme.service';
+import { PrimeNgModule } from '../../shared/modules/prime-ng.module';
 
 @Component({
     selector: 'app-header',
-    imports: [PrimeNgModule, ReactiveFormsModule, RouterLink, SidebarComponent],
+  imports: [PrimeNgModule, ReactiveFormsModule, RouterLink, ButtonModule, TooltipModule, OverlayBadgeModule],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss'
 })
@@ -38,43 +40,45 @@ export class HeaderComponent implements OnInit {
 
   themeGroup!: FormGroup;
 
-  notificationPanelVisible: boolean = false;
+  notificationPanelVisible = signal(false);
 
 
-  constructor(private themeService: ThemeService, public notification: NotificationsService) {
-    this.themeGroup = new FormGroup({
-      selectedTheme: new FormControl<string>("", Validators.required)
-    });
+  constructor(private router: Router, public authService: ClerkAuthService, public notification: NotificationsService, public themeService: ThemeService) {
   }
 
   ngOnInit() {
-    this.items = [
-      {
-        label: 'Update',
-        icon: 'pi pi-refresh'
-      },
-      {
-        label: 'Delete',
-        icon: 'pi pi-times'
-      }
-    ];
   }
 
-  onToggleTheme() {
-    const theme = this.themeGroup.value.selectedTheme.id ?? "Aura";
-  }
-
-  toggleDarkMode() {
-    const element = document.querySelector('html');
-
-    if (element === null) {
+  openSignIn() {
+    if (this.authService.getUserFromSignal === null) {
+      this.authService.signIn();
       return;
     }
+    console.log("User details ", this.authService.getUserFromSignal);
+    console.log("Already signed in...");
+  }
 
-    element.classList.toggle('my-app-dark');
+  onSignOut() {
+    if (this.authService.getUserFromSignal === null) {
+      return;
+    }
+    this.authService.signOut().then(() => {
+      this.router.navigate(['']); // Redirect to login page
+    });
+  }
+
+  openUser() {
+    this.authService.openUserProfile();
+    this.getCurrentUser();
+  }
+
+  getCurrentUser() {
+    const res = this.authService.currentUser();
+    console.log("Checking: ", res);
+    return res;
   }
 
   toggleNotification() {
-    this.notificationPanelVisible = true;
+    this.notificationPanelVisible.set(true);
   }
 }

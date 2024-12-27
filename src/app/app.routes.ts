@@ -1,18 +1,34 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { MyComponentsComponent } from './components/my-components/my-components.component';
-import { SignInComponent } from './components/auth/sign-in/sign-in.component';
+import { ShowcaseComponent } from './components/showcase/showcase.component';
+import { authGuard } from './shared/guards/auth.guard';
+import { MyTableComponent } from './components/showcase/my-table/my-table.component';
+import { MyChartComponent } from './components/showcase/my-chart/my-chart.component';
 
 export const routes: Routes = [
     {
         title: "Home",
         path: "",
-        component: MyComponentsComponent
+        component: HomeComponent,
     },
     {
-        title: "Sign In",
-        path: "sign-in",
-        component: SignInComponent
+        title: "Showcase",
+        path: "showcase",
+        component: ShowcaseComponent,
+        // canActivate: [authGuard]
+    },
+    {
+        title: "My Table",
+        path: "table",
+        component: MyTableComponent,
+        // canActivate: [authGuard]
+    },
+    {
+        title: "My Chart",
+        path: "chart",
+        component: MyChartComponent,
+    // canActivate: [authGuard]
     },
     {
         title: "Page Not Found",

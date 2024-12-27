@@ -1,49 +1,82 @@
-<div class="card">
-    <p-toolbar>
-        <ng-template pTemplate="start">
-            <button pButton icon="pi pi-plus" routerLink="" class="mr-2" text severity="secondary">Home</button>
-        </ng-template>
+<!-- Without prime ng to check if dark theme is applied or not -->
+<!-- <div class="flex bg-blue-900 justify-evenly items-center h-8">
+    <h1>App Name</h1>
+    <button
+      rounded="true"
+      [title]="
+        themeService.currentTheme() === 'light' ? 'Dark Mode' : 'Light Mode'
+      "
+      severity="info"
+      (click)="themeService.toggleTheme()"
+    >
+      <span class="material-icons">
+        @if(themeService.currentTheme() === 'light')
+        { dark_mode } 
+        @else {
+        light_mode }
+      </span>
+    </button>
+  </div> -->
+<!-- Ends here -->
+<header>
+  <p-toolbar class="">
+    <ng-template #start>
+      <button
+        pButton
+        class="mr-2"
+        text
+        severity="primary"
+        (click)="notificationPanelVisible.set(true)"
+      >
+        <span class="material-icons"> menu </span>
+      </button>
 
-        <ng-template pTemplate="center">
-            <input pInputText id="over_label" autocomplete="off" placeholder="Search" />
-            <p-button rounded="true" [text]="true" severity="info" (onClick)="toggleDarkMode()">
-            
-                <span class="material-icons">
-                    dark_mode
-                </span>
-            </p-button>
-            <p-button rounded="true" [text]="true" severity="info" (onClick)="toggleDarkMode()">
-            
-                <span class="material-icons">
-                    light_mode
-                </span>
-            </p-button>
-        </ng-template>
+      <button
+        icon="pi pi-plus"
+        routerLink=""
+        class="mr-2 bg-red-400 p-2 rounded-md"
+      >
+        Home
+      </button>
+    </ng-template>
 
-        <ng-template pTemplate="end">
-            <!-- <app-configurator /> -->
-            <!-- <p-button [severity]="'info'" (click)="toggleNotification()"> -->
-            <div pButton rounded="true" [text]="true" severity="info" (click)="toggleNotification()" style="margin-right: 2rem;">
-                <div class="card flex justify-center">
-                    <!-- <i class="material-icons" pBadge [value]="2456" severity="info">notifications</i> -->
-                    <!-- <span class="material-icons">
-                                                                                                                                                                                                                                    notifications
-                                                                                                                                                                                                                                </span> -->
-            
-                    <p-overlaybadge [value]="notification.allNotifications().length" badgeSize="small" severity="info">
-                        <i class="material-icons" style="font-size: 2rem">notifications</i>
-                    </p-overlaybadge>
-                </div>
-            </div>
-            <!-- </p-button> -->
+    <ng-template #center>
+      <input
+        pInputText
+        id="over_label"
+        autocomplete="off"
+        placeholder="Search"
+      />
+    </ng-template>
 
-            <form [formGroup]="themeGroup" class="card flex justify-center">
-                <p-select formControlName="selectedTheme" [options]="themesMenu" optionLabel="value"
-                    placeholder="Select a Theme" class="w-full md:w-56" (onChange)="onToggleTheme()" />
-            </form>
-
-            <p-splitbutton label="Save" [model]="items" />
-        </ng-template>
-    </p-toolbar>
-</div>
-<app-sidebar [visible]="notificationPanelVisible" />
+    <ng-template #end>
+      <p-button
+        rounded="true"
+        [title]="
+          themeService.currentTheme() === 'light' ? 'Dark Mode' : 'Light Mode'
+        "
+        [text]="true"
+        severity="info"
+        (onClick)="themeService.toggleTheme()"
+      >
+        <span class="material-icons">
+          @if(themeService.currentTheme() === 'light') { dark_mode } @else {
+          light_mode }
+        </span>
+      </p-button>
+      @if(authService.getUserFromSignal !== null) {
+      <div class="flex gap-3 cursor-pointer" (click)="openUser()">
+        <p-avatar
+          [image]="authService.getUserFromSignal.imageUrl"
+          class="mr-2"
+          size="large"
+          shape="circle"
+        />
+      </div>
+      <button pButton (click)="onSignOut()" severity="danger">Logout</button>
+      } @else {
+      <button pButton (click)="openSignIn()">Login</button>
+      }
+    </ng-template>
+  </p-toolbar>
+</header>

@@ -1,4 +1,23 @@
-<app-header></app-header>
+<!-- <header>
+    <div class="bg-blue-400 h-10 sticky">
+        My Header
+    </div>
+</header> -->
 
+<main>
+  <app-sidebar
+    [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
+    (changeIsLeftSidebarCollapsed)="changeIsLeftSidebarCollapsed($event)"
+  >
+  </app-sidebar>
 
-<router-outlet />
+  <app-home
+    [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
+    [screenWidth]="screenWidth()"
+  ></app-home>
+</main>
+
+<!-- Footer -->
+<!-- <footer class="bg-gray-800 text-white py-4 text-center">
+  <p>&copy; 2024 My Website. All rights reserved.</p>
+</footer> -->

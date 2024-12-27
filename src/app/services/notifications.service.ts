@@ -13,7 +13,7 @@ export class NotificationsService {
   // connectionURL: string = "http://localhost:5171/notifications";
 
   constructor() {
-    this.createConnection();
+    // this.createConnection();
   }
 
   getHubConnection(): HubConnection {

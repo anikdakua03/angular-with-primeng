@@ -1,4 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
- .parts {
-   margin-top: 2rem;
- }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Override default button properties using design tokens
+
+// Assuming your default app uses 'my-dark-app' for dark mode
+// :host-context(.my-dark-app) {
+  
+//   // Use CSS variables to customize the button design
+//   :root {
+//     --p-button-border-radius: 8px; // Rounded borders
+//     --p-button-rounded-border-radius: 50%; // Fully rounded buttons
+//     --p-button-gap: 12px; // Adjust gap between icon and text
+//     --p-button-padding-x: 16px; // Adjust horizontal padding
+//     --p-button-padding-y: 8px; // Adjust vertical padding
+//     --p-button-primary-background: #ad1414;
+
+//     --p-zinc-900 : red;
+//   --p-drawer-background: red; /* Your desired background color */
+//   }
+
+//   // Add specific customizations for the p-button class
+//   .p-button-primary {
+//     background-color: #007bff; // Primary blue color
+//     color: #ffffff; // Text color
+//     border: none; // Remove border
+//     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); // Subtle shadow
+    
+//     &:hover {
+//       background-color: #0056b3; // Darker blue on hover
+//       color: #e6e6e6; // Slightly lighter text
+//     }
+//   }
+
+//   // Loading icon customization
+//   .p-button-loading-icon {
+//     color: #ffffff; // Keep icon consistent with text
+//   }
+
+//   // Button icon customization
+//   .p-button-icon {
+//     font-size: 18px; // Custom icon size
+//     margin-right: 8px; // Space between icon and label
+//   }
+
+//   // Label customization
+//   .p-button-label {
+//     font-weight: bold; // Bold label
+//     letter-spacing: 0.5px; // Slight letter spacing
+//   }
+// }
+
+.pi-sort, .pi-sort-up .pi-sort-down {
+  display: none;
+}
+
+// th.p-sortable-column {
+//   position: relative;
+// }
+
+// th.p-sortable-column .p-sortable-column-icon::before {
+//   font-family: 'Material Icons';
+//   content: 'unfold_more';
+// }
+
+// th.p-sortable-column.p-highlight .p-sortable-column-icon::before {
+//   content: 'arrow_upward';
+// }
+
+// th.p-sortable-column.p-highlight:not(.p-sortable-column-desc) .p-sortable-column-icon::before {
+//   content: 'arrow_downward';
+// }

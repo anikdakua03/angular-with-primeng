@@ -18,6 +18,8 @@ import { SelectButton } from 'primeng/selectbutton';
 import { ToggleSwitch } from 'primeng/toggleswitch';
 import { BadgeModule } from 'primeng/badge';
 import { OverlayBadgeModule } from 'primeng/overlaybadge';
+import { AvatarModule } from 'primeng/avatar';
+import { DrawerModule } from 'primeng/drawer'
 
 @NgModule({
   declarations: [],
@@ -29,7 +31,7 @@ import { OverlayBadgeModule } from 'primeng/overlaybadge';
   ],
   exports: [
     CommonModule,
-    ButtonModule, TableModule, CardModule, FloatLabelModule, ToastModule, TabsModule, ToolbarModule, IconFieldModule, SplitButtonModule, InputIconModule, SelectModule, SelectButton, InputTextModule, ToggleSwitch, BadgeModule, OverlayBadgeModule,
+    ButtonModule, TableModule, CardModule, FloatLabelModule, ToastModule, TabsModule, ToolbarModule, IconFieldModule, SplitButtonModule, InputIconModule, SelectModule, SelectButton, InputTextModule, ToggleSwitch, BadgeModule, OverlayBadgeModule, AvatarModule, DrawerModule,
     // Deprecated
     SidebarModule,
     DropdownModule

@@ -1,66 +1,50 @@
-import { DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { computed, effect, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
-import { AppState } from '../shared/interfaces/appState';
+import { DOCUMENT } from '@angular/common';
+import { inject, Injectable, signal } from '@angular/core';
+
+declare type Theme = 'dark' | 'light';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
 
-  state: AppState = {
-    configActive: false,
-    menuActive: false,
-    newsActive: false
-  };
-
-  appState = signal<any>({
-    preset: 'Aura',
-    primary: 'noir',
-    surface: 'slate',
-    darkTheme: false
-  });
-
-  document = inject(DOCUMENT);
-
-  platformId = inject(PLATFORM_ID);
-
-  theme = computed(() => (this.appState().darkTheme ? 'dark' : 'light'));
+  private document = inject(DOCUMENT);
+  readonly currentTheme = signal<Theme>('light');
 
   constructor() {
-    effect(() => {
-      const state = this.appState();
-
-      if (isPlatformBrowser(this.platformId)) {
-        if (state.darkTheme) {
-          this.document.documentElement.classList.add('p-dark');
-        } else {
-          this.document.documentElement.classList.remove('p-dark');
-        }
-      }
-    });
+    this.setTheme(this.getThemeFromLocalStorage());
   }
 
-  showMenu() {
-    this.state.menuActive = true;
+  toggleTheme() {
+    if (this.currentTheme() === 'light') {
+      this.setTheme('dark');
+    }
+    else {
+      this.setTheme('light');
+    }
   }
 
-  hideMenu() {
-    this.state.menuActive = false;
+  private setTheme(theme: Theme) {
+    this.currentTheme.set(theme);
+
+    if (theme === 'dark') {
+      this.document.body.classList.add('my-app-dark');
+      this.document.documentElement.classList.add('my-app-dark');
+    }
+    else {
+      this.document.body.classList.remove('my-app-dark');
+      this.document.documentElement.classList.remove('my-app-dark');
+    }
+
+    //  also set in local storage
+    this.setThemeInLocalStorage(theme);
   }
 
-  showConfig() {
-    this.state.configActive = true;
+  setThemeInLocalStorage(theme: Theme) {
+    localStorage.setItem("preferred-theme", theme);
   }
 
-  hideConfig() {
-    this.state.configActive = false;
-  }
-
-  showNews() {
-    this.state.newsActive = true;
-  }
-
-  hideNews() {
-    this.state.newsActive = false;
+  getThemeFromLocalStorage(): Theme {
+    return localStorage.getItem("preferred-theme") as Theme ?? 'light';
   }
 }
