@@ -1,10 +1,11 @@
 import { Component, HostListener, OnInit, signal } from '@angular/core';
 import { HomeComponent } from "./components/home/home.component";
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @Component({
   selector: 'app-root',
-  imports: [SidebarComponent, HomeComponent],
+  imports: [SidebarComponent, HomeComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -27,7 +28,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.isLeftSidebarCollapsed.set(this.screenWidth() < 768);
+    this.isLeftSidebarCollapsed.set(this.screenWidth() < 768);
   }
 
   changeIsLeftSidebarCollapsed(isLeftSidebarCollapsed: boolean): void {

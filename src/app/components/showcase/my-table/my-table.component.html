@@ -1,18 +1,16 @@
 <div class="card p-5 m-1">
-  <button (click)="getAllUsers()">Get users</button>
+  <button pButton (click)="getAllUsers()">Get users</button>
 </div>
 
-<div class="h-[100%]">
+<!-- Add edit modal -->
+<app-add-edit-table-data [showAddEditDialog]="showAddEditModal()" (onShowAddEditDialogCloseClick)="showAddEditModal.set(!showAddEditModal())" (onShowAddEditDialogClick)="true" [selectedData]="selectedData"></app-add-edit-table-data>
+<!--  -->
+
+<!-- <div class="h-[100%]">
   <p-toolbar styleClass="mb-6">
     <ng-template #start>
-      <p-button label="New" icon="search" class="mr-2" />
-      <p-button
-        severity="danger"
-        label="Delete"
-        icon="pi pi-trash"
-        outlined
-        [disabled]="true"
-      />
+      <p-button label="New" class="mr-2" (onClick)="openAddEditModal()" />
+      <p-button severity="danger" label="Delete" />
     </ng-template>
   </p-toolbar>
 
@@ -38,13 +36,13 @@
     dataKey="id"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [showCurrentPageReport]="true"
-  >
-    <ng-template #caption>
+  > -->
+    <!-- <ng-template #caption>
       <div class="flex items-center justify-between">
         <h5 class="m-0 text-2xl font-bold">Manage Products</h5>
-        <p-iconfield>
+        <p-iconfield> -->
           <!-- <p-inputicon styleClass="pi pi-search" /> -->
-          <span class="material-icons">search</span>
+          <!-- <span class="material-icons">search</span>
           <input
             pInputText
             type="text"
@@ -53,40 +51,40 @@
           />
         </p-iconfield>
       </div>
-    </ng-template>
+    </ng-template> -->
 
-    <ng-template #header>
-      <tr class="bg-amber-600 text-xl">
+    <!-- <ng-template #header>
+      <tr class="bg-amber-600 text-xl"> -->
         <!-- <th style="width: 3rem">
                     <p-tableHeaderCheckbox />
                 </th> -->
-        @for(col of cols; track $index) {
+        <!-- @for(col of cols; track $index) {
         <th [pSortableColumn]="col.id" style="min-width: 16rem">
           {{ col.name }}
           <p-sortIcon #ref [field]="col.id"> </p-sortIcon>
         </th>
         }
       </tr>
-    </ng-template>
+    </ng-template> -->
 
-    <ng-template #body let-product>
-      <tr>
+    <!-- <ng-template #body let-product>
+      <tr> -->
         <!-- <td style="width: 3rem">
                     <p-tableCheckbox [value]="product" />
                 </td> -->
-        <td style="min-width: 12rem">{{ product.title }}</td>
+        <!-- <td style="min-width: 12rem">{{ product.title }}</td>
         <td style="min-width: 16rem">{{ product.category }}</td>
         <td style="min-width: 16rem">{{ product.price }}</td>
         <td style="min-width: 16rem">{{ product.stock }}</td>
         <td style="min-width: 16rem">{{ product.discountPercentage }}</td>
         <td style="min-width: 16rem">{{ product.description }}</td>
         <td style="min-width: 16rem">{{ product.rating }}</td>
-        <td style="min-width: 16rem">{{ product.brand }}</td>
+        <td style="min-width: 16rem">{{ product.brand }}</td> -->
         <!-- <td style="min-width: 16rem">{{ product.thumbnail }}</td> -->
         <!-- <td>
                     <img [src]="product.images[0]" [alt]="product.title" style="width: 64px" class="rounded" />
                 </td> -->
-        <td>
+        <!-- <td>
           <p-button
             icon="pi pi-pencil"
             class="mr-2"
@@ -99,14 +97,22 @@
             [rounded]="true"
             [outlined]="true"
           />
-        </td>
-      </tr>
-    </ng-template>
+        </td> -->
+      <!-- </tr>
+    </ng-template> -->
 
-    <ng-template #summary>
+    <!-- <ng-template #summary>
       <div class="flex items-center justify-between">
         In total there are {{ products() ? products().length : 0 }} products.
       </div>
-    </ng-template>
-  </p-table>
-</div>
+    </ng-template> -->
+  <!-- </p-table>
+</div> -->
+
+
+<!-- Using res-usable table wrapper component -->
+<app-primeng-table-wrapper [headerName]="'My Table Data'" emptyMessage="No table data found." [tableData]="products()" [tableDataKey]="'id'" [tableColumns]="cols" [rowsPerPage]="10" [rowsOptionsPerPage]="[5, 10, 15, 20]" [isEditDeleteOnRowNeeded]="true" [headerCheckboxNeeded]="true" (onEditAction)="onEditProduct($event)" (onDeleteAction)="onDeleteProduct($event)" (onSelectedDataAction)="getSelectedData($event)">
+<p class="bg-red-700">
+  Hello from parent table
+</p>
+</app-primeng-table-wrapper>

@@ -1,0 +1,132 @@
+<div class="card">
+  <p-table
+    #dt
+    [value]="tableData()"
+    [dataKey]="tableDataKey()"
+    [globalFilterFields]="columnFilterFields()"
+    [(selection)]="selectedData"
+    [rows]="rowsPerPage()"
+    [rowsPerPageOptions]="rowsOptionsPerPage()"
+    [paginator]="isPaginatorRequired()"
+    [rowHover]="rowHover()"
+    [showCurrentPageReport]="showCurrentPageReport()"
+    showGridlines
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-container> </ng-container>
+
+    <ng-template #caption>
+      <div class="text-center">
+        {{ headerName() }}
+      </div>
+      <div class="flex items-center justify-between">
+        <div>
+          <button class="bg-blue-400 p-2 rounded-md">New</button>
+        </div>
+
+        <div>
+          <button
+            class="bg-blue-400 p-2 rounded-md"
+            (click)="onSelectedDataAction.emit(selectedData)"
+          >
+            Selected Data Action
+          </button>
+        </div>
+
+        <p-iconfield>
+          <p-inputicon styleClass="material-icons">search</p-inputicon>
+          <input
+            pInputText
+            type="text"
+            (input)="dt.filterGlobal(($any)($event.target).value, 'contains')"
+            placeholder="Search..."
+          />
+        </p-iconfield>
+      </div>
+    </ng-template>
+
+    <ng-template #header>
+      <tr class="text-xl">
+        <!-- Checkbox header -->
+        @if(headerCheckboxNeeded()) {
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox />
+        </th>
+        }
+
+        <!-- Main Headers -->
+        @for(col of tableColumns(); track $index) {
+        <th [pSortableColumn]="col.id" style="min-width: 16rem">
+          {{ col.name }}
+          <p-sortIcon #ref [field]="col.id" class="material-icons"
+            >search</p-sortIcon
+          >
+        </th>
+        }
+
+        <!-- Action Column -->
+        @if(isEditDeleteOnRowNeeded()) {
+        <th style="width: 3rem">Action</th>
+        }
+      </tr>
+    </ng-template>
+
+    <ng-template #sorticon let-sortOrder>
+      <!-- [ngClass]="{
+        'pi-sort': sortOrder === 0,
+        'pi-sort-up-fill': sortOrder === 1,
+        'pi-sort-down-fill': sortOrder === -1,
+      }" -->
+      <i class="material-icons">
+        @if(sortOrder === 0) { sort } 
+        @else if (sortOrder === 1) 
+        { north } 
+        @else { south }
+      </i>
+    </ng-template>
+
+    <ng-template #body let-data>
+      <tr>
+        <!-- Checkbox for selection -->
+        @if(headerCheckboxNeeded()) {
+        <td style="width: 3rem">
+          <p-tableCheckbox [value]="data" ariaLabel="Row checkbox" />
+        </td>
+        }
+
+        <!-- Actual data -->
+        @for(col of tableColumns(); track $index) {
+        <td>{{ data[col.id] }}</td>
+        }
+
+        <!-- Action button -->
+        @if(isEditDeleteOnRowNeeded()) {
+        <td>
+          <div class="flex flex-row justify-evenly gap-2">
+            <button class="bg-blue-400" (click)="onEditAction.emit(data)">
+              Edit
+            </button>
+
+            <button class="bg-red-200" (click)="onDeleteAction.emit(data)">
+              Delete
+            </button>
+          </div>
+        </td>
+        }
+      </tr>
+    </ng-template>
+
+    <ng-template #emptymessage>
+      <tr>
+        <td colspan="5">{{ emptyMessage() }}</td>
+      </tr>
+    </ng-template>
+
+    <ng-template #summary>
+      <div class="flex items-center justify-between">
+        In total there are {{ tableData() ? tableData().length : 0 }} products.
+      </div>
+    </ng-template>
+  </p-table>
+</div>
