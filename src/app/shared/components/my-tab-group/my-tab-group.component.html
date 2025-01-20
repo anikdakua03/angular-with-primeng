@@ -1,0 +1,56 @@
+<!-- <div class="card">
+  <p-tabs value="0">
+    <p-tablist>
+      @for (tab of tabs; track tab.value) {
+      <p-tab [value]="tab.value">{{ tab.title }} <span class="material-icons bg-red-200 rounded-md" (click)="removeThisTab($event)">close</span> </p-tab>
+      }
+    </p-tablist>
+
+    <p-tabpanels>
+      @for (tab of tabs; track tab.value) {
+      <p-tabpanel [value]="tab.value">
+        <p class="m-0">{{ tab.content }}</p>
+      </p-tabpanel>
+      }
+    </p-tabpanels>
+  </p-tabs>
+</div> -->
+
+
+<div class="card">
+    <button class="p-2 m-2 bg-blue-400 rounded-md" (click)="addTab()">Add Tab</button>
+  <p-tabs [(value)]="tabs[0].value">
+    <p-tablist>
+      <ng-container *ngFor="let tab of tabs; trackBy: trackByValue">
+        <p-tab [value]="tab.value">
+          {{ tab.title }}
+          <span
+            class="material-icons bg-red-200 rounded-md"
+            (click)="removeThisTab($event, tab.value)"
+          >
+            close
+          </span>
+        </p-tab>
+      </ng-container>
+    </p-tablist>
+
+    <p-tabpanels>
+      <ng-content>
+        
+      </ng-content>
+      <ng-container *ngFor="let tab of tabs; trackBy: trackByValue">
+        <p-tabpanel [value]="tab.value">
+          <!-- Use ngComponentOutlet to dynamically render components -->
+          <ng-container *ngIf="tab.content instanceof Type; else staticContent">
+            <ng-container *ngComponentOutlet="tab.content"></ng-container>
+          </ng-container>
+          <ng-template #staticContent>
+            <p class="m-0">{{ tab.content }}</p>
+          </ng-template>
+        </p-tabpanel>
+      </ng-container>
+    </p-tabpanels>
+  </p-tabs>
+</div>
+
+

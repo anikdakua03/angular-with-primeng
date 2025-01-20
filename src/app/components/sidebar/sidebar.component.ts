@@ -4,10 +4,11 @@ import { NotificationsService } from '../../services/notifications.service';
 import { PrimeNgModule } from '../../shared/modules/prime-ng.module';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { MenuItem } from 'primeng/api';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [PrimeNgModule, PanelMenuModule],
+  imports: [PrimeNgModule, PanelMenuModule, RouterLink],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })

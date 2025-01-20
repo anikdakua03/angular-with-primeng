@@ -1,11 +1,12 @@
-import { Component, input, OnInit, output } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
-import { FluidModule } from 'primeng/fluid';
-import { DialogModule, DialogClasses, DialogStyle } from 'primeng/dialog';
-import { InputTextModule } from 'primeng/inputtext';
-import { InputNumberModule } from 'primeng/inputnumber';
-import { FloatLabelModule } from 'primeng/floatlabel';
+import { Component, input, OnChanges, OnInit, output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { FluidModule } from 'primeng/fluid';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextModule } from 'primeng/inputtext';
+import { DemoService } from '../../../../services/demo.service';
 
 @Component({
   selector: 'app-add-edit-table-data',
@@ -13,25 +14,27 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
   templateUrl: './add-edit-table-data.component.html',
   styleUrl: './add-edit-table-data.component.scss'
 })
-export class AddEditTableDataComponent implements OnInit {
+export class AddEditTableDataComponent implements OnInit, OnChanges {
   showAddEditDialog = input.required<boolean>();
   selectedData = input<any | null>(null);
 
   onShowAddEditDialogCloseClick = output();
   onShowAddEditDialogClick = output();
 
-  dialogClasses = DialogClasses;
-  dialogStyles = new DialogStyle();
+  // dialogClasses = DialogClasses;
+  // dialogStyles = new DialogStyle();
 
   addEditItemForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private demoService: DemoService) {
   }
 
   ngOnInit(): void {
     // Initialize form
     this.initializeForm();
+  }
 
+  ngOnChanges(changes: SimpleChanges): void {
     console.log("Checking selected data : ", this.selectedData());
     if (this.selectedData() !== null) {
       this.addEditItemForm.patchValue({
@@ -67,7 +70,15 @@ export class AddEditTableDataComponent implements OnInit {
   }
 
   addOrEditItem(): void {
-    console.log("Form value :", this.addEditItemForm);
+    console.log("Updated form value :", this.addEditItemForm.value);
+
+    const allCurrentProducts = this.demoService.products();
+
+    let foundIndex = allCurrentProducts.findIndex(a => a.id === this.selectedData().id);
+
+    allCurrentProducts[foundIndex] = this.addEditItemForm.value;
+
+    this.closeDialog();
   }
 }
 

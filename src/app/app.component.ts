@@ -1,11 +1,10 @@
 import { Component, HostListener, OnInit, signal } from '@angular/core';
 import { HomeComponent } from "./components/home/home.component";
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { HeaderComponent } from './components/header/header.component';
 
 @Component({
   selector: 'app-root',
-  imports: [SidebarComponent, HomeComponent, HeaderComponent],
+  imports: [SidebarComponent, HomeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

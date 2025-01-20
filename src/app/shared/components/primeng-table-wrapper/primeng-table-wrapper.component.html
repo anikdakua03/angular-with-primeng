@@ -14,8 +14,6 @@
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [tableStyle]="{ 'min-width': '50rem' }"
   >
-    <ng-container> </ng-container>
-
     <ng-template #caption>
       <div class="text-center">
         {{ headerName() }}
@@ -72,12 +70,8 @@
       </tr>
     </ng-template>
 
-    <ng-template #sorticon let-sortOrder>
-      <!-- [ngClass]="{
-        'pi-sort': sortOrder === 0,
-        'pi-sort-up-fill': sortOrder === 1,
-        'pi-sort-down-fill': sortOrder === -1,
-      }" -->
+    <!-- Way around of using custom sort icons -->
+    <ng-template #sorticon pTemplate="sorticon" let-sortOrder>
       <i class="material-icons">
         @if(sortOrder === 0) { sort } 
         @else if (sortOrder === 1) 

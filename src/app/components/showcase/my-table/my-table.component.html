@@ -1,5 +1,6 @@
 <div class="card p-5 m-1">
-  <button pButton (click)="getAllUsers()">Get users</button>
+  <!-- <button pButton (click)="getAllUsers()">Get users</button> -->
+  <button pButton (click)="onAddRandomProduct()">Add Random Product</button>
 </div>
 
 <!-- Add edit modal -->
@@ -111,8 +112,7 @@
 
 
 <!-- Using res-usable table wrapper component -->
-<app-primeng-table-wrapper [headerName]="'My Table Data'" emptyMessage="No table data found." [tableData]="products()" [tableDataKey]="'id'" [tableColumns]="cols" [rowsPerPage]="10" [rowsOptionsPerPage]="[5, 10, 15, 20]" [isEditDeleteOnRowNeeded]="true" [headerCheckboxNeeded]="true" (onEditAction)="onEditProduct($event)" (onDeleteAction)="onDeleteProduct($event)" (onSelectedDataAction)="getSelectedData($event)">
+<app-primeng-table-wrapper [headerName]="'My Table Data'" emptyMessage="No table data found." [tableData]="demoService.products()" [tableDataKey]="'id'" [columnFilterFields]="columnFilters" [tableColumns]="cols" [rowsPerPage]="10" [rowsOptionsPerPage]="[5, 10, 15, 20]" [isEditDeleteOnRowNeeded]="true" [headerCheckboxNeeded]="true" (onEditAction)="onEditProduct($event)" (onDeleteAction)="onDeleteProduct($event)" (onSelectedDataAction)="getSelectedData($event)">
 <p class="bg-red-700">
-  Hello from parent table
 </p>
 </app-primeng-table-wrapper>
