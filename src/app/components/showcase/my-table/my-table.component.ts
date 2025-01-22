@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
@@ -8,6 +8,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { DemoService } from '../../../services/demo.service';
 import { PrimengTableWrapperComponent } from "../../../shared/components/primeng-table-wrapper/primeng-table-wrapper.component";
 import { IProduct } from '../../../shared/interfaces/product';
+import { TableDataStore } from '../../../store/table-data/table-data.store';
 import { AddEditTableDataComponent } from "./add-edit-table-data/add-edit-table-data.component";
 
 @Component({
@@ -38,12 +39,27 @@ export class MyTableComponent {
 
   columnFilters = this.cols.map(a => a.id)
 
+  private readonly tableDataStore = inject(TableDataStore);
+
+  products = this.tableDataStore.products;
+
+  canUndo = this.tableDataStore.canUndo;
+  canRedo = this.tableDataStore.canUndo;
+
   constructor(public demoService: DemoService) {
 
   }
 
   openAddEditModal(): void {
     this.showAddEditModal.set(true);
+  }
+
+  onUndo(): void {
+    this.tableDataStore.undo();
+  }
+
+  onRedo(): void {
+    this.tableDataStore.redo();
   }
 
   getAllUsers(): void {
@@ -64,6 +80,8 @@ export class MyTableComponent {
     this.demoService.products.update((prevProduct: IProduct[]) =>
       [...prevProduct, randomProductToAdd]
     );
+
+    this.tableDataStore.addProduct(randomProductToAdd);
   }
 
   onEditProduct(product: IProduct) {
@@ -76,6 +94,7 @@ export class MyTableComponent {
     console.log("Selected product to delete : ", product);
     if (confirm(`Are you sure that you want to delete this ${product.title} product ?`)) {
       this.demoService.products.set(this.demoService.products().filter(a => a.id !== product.id));
+      this.tableDataStore.deleteProduct(product);
     }
   }
 

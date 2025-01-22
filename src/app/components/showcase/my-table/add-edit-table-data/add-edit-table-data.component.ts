@@ -1,4 +1,4 @@
-import { Component, input, OnChanges, OnInit, output, SimpleChanges } from '@angular/core';
+import { Component, inject, input, OnChanges, OnInit, output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
@@ -7,6 +7,8 @@ import { FluidModule } from 'primeng/fluid';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { DemoService } from '../../../../services/demo.service';
+import { TableDataStore } from '../../../../store/table-data/table-data.store';
+import { IProduct } from '../../../../shared/interfaces/product';
 
 @Component({
   selector: 'app-add-edit-table-data',
@@ -25,6 +27,8 @@ export class AddEditTableDataComponent implements OnInit, OnChanges {
   // dialogStyles = new DialogStyle();
 
   addEditItemForm!: FormGroup;
+
+  readonly tableDataStore = inject(TableDataStore);
 
   constructor(private fb: FormBuilder, private demoService: DemoService) {
   }
@@ -72,11 +76,23 @@ export class AddEditTableDataComponent implements OnInit, OnChanges {
   addOrEditItem(): void {
     console.log("Updated form value :", this.addEditItemForm.value);
 
-    const allCurrentProducts = this.demoService.products();
+    let allCurrentProducts = this.tableDataStore.products();
 
+    debugger
     let foundIndex = allCurrentProducts.findIndex(a => a.id === this.selectedData().id);
 
-    allCurrentProducts[foundIndex] = this.addEditItemForm.value;
+    // allCurrentProducts[foundIndex].brand = this.addEditItemForm.value.brand;
+    // allCurrentProducts[foundIndex].category = this.addEditItemForm.value.category;
+    // allCurrentProducts[foundIndex].description = this.addEditItemForm.value.description;
+    // allCurrentProducts[foundIndex].discountPercentage = this.addEditItemForm.value.discountPercentage;
+    // allCurrentProducts[foundIndex].images = this.addEditItemForm.value.images;
+    // allCurrentProducts[foundIndex].price = this.addEditItemForm.value.price;
+    // allCurrentProducts[foundIndex].rating = this.addEditItemForm.value.rating;
+    // allCurrentProducts[foundIndex].stock = this.addEditItemForm.value.stock;
+    // allCurrentProducts[foundIndex].thumbnail = this.addEditItemForm.value.thumbnail;
+    // allCurrentProducts[foundIndex].title = this.addEditItemForm.value.title;
+
+    this.tableDataStore.editProduct(foundIndex, this.addEditItemForm.value);
 
     this.closeDialog();
   }
