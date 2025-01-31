@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'app-showcase',
-    imports: [],
+    imports: [RouterOutlet],
     templateUrl: './showcase.component.html',
     styleUrl: './showcase.component.scss'
 })
