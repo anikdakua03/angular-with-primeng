@@ -31,59 +31,83 @@
 </div> -->
 
 <!-- Without using prime ng components -->
-<div class="sidenav" [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''">
+<div
+  class="sidenav"
+  [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''"
+>
   <div class="logo-container">
     <button class="logo" (click)="toggleCollapse()">
-      <span class="material-icons">menu</span>
+      <span class="material-icons text-[#F19E39]">menu</span>
     </button>
 
-    @if(isLeftSidebarCollapsed() === false)
-    {
-      <div class="logo-text">My App</div>
-  
-      <button class="btn-close" (click)="closeSidenav()">
-        <span class="material-icons">close</span>
-      </button>
+    @if(isLeftSidebarCollapsed() === false) {
+    <div class="logo-text">My App</div>
+
+    <button class="btn-close" (click)="closeSidenav()">
+      <span class="material-icons text-[#f72626]">close</span>
+    </button>
     }
   </div>
 
   <div class="sidenav-nav">
     <li class="sidenav-nav-item">
       <a class="sidenav-nav-link" routerLink="">
-        @if(isLeftSidebarCollapsed() === false)
-        {
-          <span class="sidenav-link-text">Home</span>
+        @if(isLeftSidebarCollapsed() === false) {
+        <span class="sidenav-link-text">Home</span>
         }
         <span class="material-icons sidenav-link-icon">home</span>
       </a>
     </li>
     <li class="sidenav-nav-item">
       <a class="sidenav-nav-link" routerLink="showcase/my-table">
-        @if(isLeftSidebarCollapsed() === false)
-        {
-          <span class="sidenav-link-text">Table</span>
+        @if(isLeftSidebarCollapsed() === false) {
+        <span class="sidenav-link-text">Table</span>
         }
         <span class="material-icons sidenav-link-icon">table_chart</span>
       </a>
     </li>
     <li class="sidenav-nav-item">
       <a class="sidenav-nav-link" routerLink="showcase/my-chart">
-        @if(isLeftSidebarCollapsed() === false)
-        {
-          <span class="sidenav-link-text">Chart</span>
+        @if(isLeftSidebarCollapsed() === false) {
+        <span class="sidenav-link-text">Chart</span>
         }
         <span class="material-icons sidenav-link-icon">show_chart</span>
       </a>
     </li>
     <li class="sidenav-nav-item">
+      <a class="sidenav-nav-link" routerLink="showcase/custom-splitter">
+        @if(isLeftSidebarCollapsed() === false) {
+        <span class="sidenav-link-text">Custom Splitter</span>
+        }
+        <span class="material-icons sidenav-link-icon">vertical_split</span>
+      </a>
+    </li>
+    <li class="sidenav-nav-item">
       <a class="sidenav-nav-link" routerLink="">
-        @if(isLeftSidebarCollapsed() === false)
-        {
-          <span class="sidenav-link-text">Others</span>
+        @if(isLeftSidebarCollapsed() === false) {
+        <span class="sidenav-link-text">Others</span>
         }
         <span class="material-icons sidenav-link-icon">dynamic_feed</span>
       </a>
     </li>
     <!-- <p-panelMenu [model]="items"></p-panelMenu> -->
+
+    <div class="bottom-0 fixed">
+      <hr class="h-px my-8 bg-gray-200 border-0">
+      <p-button
+        rounded="true"
+        [title]="
+          themeService.currentTheme() === 'light' ? 'Dark Mode' : 'Light Mode'
+        "
+        [text]="true"
+        severity="info"
+        (onClick)="themeService.toggleTheme()"
+      >
+        <span class="material-icons">
+          @if(themeService.currentTheme() === 'light') { dark_mode } @else {
+          light_mode }
+        </span>
+      </p-button>
+    </div>
   </div>
 </div>

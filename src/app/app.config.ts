@@ -17,9 +17,9 @@ export const appConfig: ApplicationConfig = {
       theme: {
         preset: Material,
         options: {
-          darkModeSelector: '.my-app-dark', // for dark mode or to toggle between dark and light 
+          darkModeSelector: '.my-app-dark', // for dark mode or to toggle between dark and light
           // darkModeSelector: '', //  for light mode
-          // darkModeSelector: 'node',// or false  // to disable
+          // darkModeSelector: 'none',// or false  // to disable
         }
       },
       inputStyle: "outlined",

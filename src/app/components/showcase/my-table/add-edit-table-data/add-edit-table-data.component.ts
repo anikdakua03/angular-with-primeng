@@ -1,18 +1,12 @@
 import { Component, inject, input, OnChanges, OnInit, output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
-import { DialogModule } from 'primeng/dialog';
-import { FloatLabelModule } from 'primeng/floatlabel';
-import { FluidModule } from 'primeng/fluid';
-import { InputNumberModule } from 'primeng/inputnumber';
-import { InputTextModule } from 'primeng/inputtext';
 import { DemoService } from '../../../../services/demo.service';
+import { PrimeNgModule } from '../../../../shared/modules/prime-ng.module';
 import { TableDataStore } from '../../../../store/table-data/table-data.store';
-import { IProduct } from '../../../../shared/interfaces/product';
 
 @Component({
   selector: 'app-add-edit-table-data',
-  imports: [DialogModule, InputTextModule, ButtonModule, FluidModule, InputNumberModule, FloatLabelModule, ReactiveFormsModule],
+  imports: [PrimeNgModule, ReactiveFormsModule],
   templateUrl: './add-edit-table-data.component.html',
   styleUrl: './add-edit-table-data.component.scss'
 })

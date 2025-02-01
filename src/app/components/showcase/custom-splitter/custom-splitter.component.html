@@ -1,0 +1,179 @@
+<button (click)="showDialog()" class="bg-orange-400 p-2 rounded-md">
+  Open Splitter Dialog
+</button>
+
+<!-- Using PrimeNg Splitter Component -->
+<!-- <p-dialog
+  [(visible)]="displayDialog"
+  [modal]="true"
+  [style]="{ width: '25rem' }"
+  [maximizable]="true"
+  appendTo="body"
+>
+  <ng-template #header>
+    <div class="inline-flex items-center justify-center gap-2">
+      <span class="font-bold whitespace-nowrap">Add / Edit</span>
+    </div>
+  </ng-template>
+
+  <div class="h-full">
+    <p-splitter
+      [panelSizes]="[50, 50]"
+      [minSizes]="[40, 20]"
+      [style]="{ height: '100vh' }"
+      layout="vertical"
+    >
+      <ng-template #panel>
+        <p-splitter [panelSizes]="[75, 25]" [minSizes]="[50, 20]" styleClass="">
+          <ng-template #panel>
+            <p-table
+              [value]="cars"
+              [(selection)]="selectedCars"
+              dataKey="brand"
+              [scrollable]="true"
+              styleClass="bg-red-500"
+            >
+              <ng-template #header>
+                <tr>
+                  <th style="width: 4rem" pFrozenColumn>
+                    <p-tableHeaderCheckbox />
+                  </th>
+                  <th pFrozenColumn>Brand</th>
+                  <th pFrozenColumn>Model</th>
+                  <th pFrozenColumn>Year</th>
+                  <th pFrozenColumn>Quantity</th>
+                  <th pFrozenColumn>Quantity 1</th>
+                  <th pFrozenColumn>Quantity 2</th>
+                  <th pFrozenColumn>Quantity 3</th>
+                  <th pFrozenColumn>Quantity</th>
+                  <th pFrozenColumn>Quantity 1</th>
+                  <th pFrozenColumn>Quantity 2</th>
+                  <th pFrozenColumn>Quantity 3</th>
+                </tr>
+              </ng-template>
+
+              <ng-template #body let-car>
+                <tr>
+                  <td pFrozenColumn>
+                    <p-tableCheckbox [value]="car" />
+                  </td>
+                  <td pFrozenColumn>{{ car.brand }}</td>
+                  <td pFrozenColumn>{{ car.model }}</td>
+                  <td pFrozenColumn>{{ car.year }}</td>
+                  <td pFrozenColumn>45745</td>
+                  <td pFrozenColumn>45745 45</td>
+                  <td pFrozenColumn>45745 dddddddd</td>
+                  <td pFrozenColumn>45745 aaaa</td>
+                  <td pFrozenColumn>45745</td>
+                  <td pFrozenColumn>45745 45</td>
+                  <td pFrozenColumn>45745 dddddddd</td>
+                  <td pFrozenColumn>45745 aaaa</td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </ng-template>
+
+          <ng-template #panel>
+            <div class="flex items-center justify-center h-full">Panel 2</div>
+          </ng-template>
+        </p-splitter>
+      </ng-template>
+
+      <ng-template #panel>
+        <div class="flex items-center justify-center h-full">Panel 3</div>
+      </ng-template>
+    </p-splitter>
+  </div>
+</p-dialog> -->
+
+<!-- Using Different Splitter -->
+<p-dialog
+  [(visible)]="displayDialog"
+  [modal]="true"
+  [style]="{ width: '25rem' }"
+  [maximizable]="true"
+  appendTo="body"
+>
+  <ng-template #header>
+    <div class="inline-flex items-center justify-center gap-2">
+      <span class="font-bold whitespace-nowrap">Add / Edit</span>
+    </div>
+  </ng-template>
+
+  <div class="h-full">
+    <as-split [direction]="'vertical'" [useTransition]="true">
+
+      <as-split-area [size]="60" [minSize]="30">
+
+        <as-split  direction="horizontal" >
+
+          <as-split-area [size]="65" [minSize]="45">
+            <p-table
+              [value]="cars"
+              [(selection)]="selectedCars"
+              dataKey="brand"
+
+            >
+              <ng-template #header>
+                <tr>
+                  <th style="width: 4rem">
+                    <p-tableHeaderCheckbox />
+                  </th>
+                  <th>Brand</th>
+                  <th>Model</th>
+                  <th>Year</th>
+                  <th>Quantity</th>
+                  <th>Quantity 1</th>
+                  <th>Quantity 2</th>
+                  <th>Quantity 3</th>
+                  <th>Quantity</th>
+                  <th>Quantity 1</th>
+                  <th>Quantity 2</th>
+                  <th>Quantity 3</th>
+                </tr>
+              </ng-template>
+
+              <ng-template #body let-car>
+                <tr>
+                  <td>
+                    <p-tableCheckbox [value]="car" />
+                  </td>
+                  <td>{{ car.brand }}</td>
+                  <td>{{ car.model }}</td>
+                  <td>{{ car.year }}</td>
+                  <td>45745</td>
+                  <td>45745 45</td>
+                  <td>45745 dddddddd</td>
+                  <td>45745 aaaa</td>
+                  <td>45745</td>
+                  <td>45745 45</td>
+                  <td>45745 dddddddd</td>
+                  <td>45745 aaaa</td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </as-split-area>
+
+          <as-split-area [size]="35" [minSize]="25">
+            <div class="flex items-center justify-center">Panel 2</div>
+
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae delectus repellendus id quasi possimus, tempore nobis accusantium facilis commodi aperiam nihil facere cum obcaecati? Possimus molestiae eos eveniet qui culpa ut nihil dolor explicabo itaque.
+            </p>
+          </as-split-area>
+        </as-split>
+
+      </as-split-area>
+
+      <as-split-area [size]="40" [minSize]="20">
+        <div class="flex items-center justify-center">Panel 3</div>
+
+        <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit facere id dignissimos eos unde voluptatibus enim ut debitis vel accusantium quae est corrupti alias, illum maxime autem. Similique soluta nesciunt mollitia labore deleniti et, magni delectus nemo. Et modi a, tenetur vitae quae ipsam, excepturi fugiat culpa temporibus, ut atque!
+        </p>
+      </as-split-area>
+
+    </as-split>
+
+  </div>
+</p-dialog>

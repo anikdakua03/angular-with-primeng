@@ -1,19 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
-import { IconFieldModule } from 'primeng/iconfield';
-import { InputIconModule } from 'primeng/inputicon';
-import { TableModule } from 'primeng/table';
-import { ToolbarModule } from 'primeng/toolbar';
 import { DemoService } from '../../../services/demo.service';
 import { PrimengTableWrapperComponent } from "../../../shared/components/primeng-table-wrapper/primeng-table-wrapper.component";
 import { IProduct } from '../../../shared/interfaces/product';
+import { PrimeNgModule } from '../../../shared/modules/prime-ng.module';
 import { TableDataStore } from '../../../store/table-data/table-data.store';
 import { AddEditTableDataComponent } from "./add-edit-table-data/add-edit-table-data.component";
 
 @Component({
   selector: 'app-my-table',
-  imports: [TableModule, ToolbarModule, ButtonModule, IconFieldModule, InputIconModule, CommonModule, AddEditTableDataComponent, PrimengTableWrapperComponent],
+  imports: [PrimeNgModule, CommonModule, AddEditTableDataComponent, PrimengTableWrapperComponent],
   templateUrl: './my-table.component.html',
   styleUrl: './my-table.component.scss'
 })

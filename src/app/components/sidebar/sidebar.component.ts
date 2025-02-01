@@ -1,13 +1,13 @@
-import { Component, input, output, viewChild } from '@angular/core';
+import { Component, inject, input, output, viewChild } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Drawer } from 'primeng/drawer';
 import { NotificationsService } from '../../services/notifications.service';
+import { ThemeService } from '../../services/theme.service';
 import { PrimeNgModule } from '../../shared/modules/prime-ng.module';
-import { PanelMenuModule } from 'primeng/panelmenu';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [PrimeNgModule, PanelMenuModule, RouterLink],
+  imports: [PrimeNgModule, RouterLink],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
@@ -16,6 +16,8 @@ export class SidebarComponent {
   readonly changeIsLeftSidebarCollapsed = output<boolean>();
 
   readonly drawerRef = viewChild.required<Drawer>('drawerRef');
+
+  themeService = inject(ThemeService);
 
   constructor(public notificationService: NotificationsService) {
 

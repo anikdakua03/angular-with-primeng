@@ -2,9 +2,6 @@ import { Component, OnInit, signal } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { MenuItem } from 'primeng/api';
-import { ButtonModule } from 'primeng/button';
-import { OverlayBadgeModule } from 'primeng/overlaybadge';
-import { TooltipModule } from 'primeng/tooltip';
 import { ClerkAuthService } from '../../services/clerk-auth/clerk-auth.service';
 import { NotificationsService } from '../../services/notifications.service';
 import { ThemeService } from '../../services/theme.service';
@@ -12,7 +9,7 @@ import { PrimeNgModule } from '../../shared/modules/prime-ng.module';
 
 @Component({
     selector: 'app-header',
-  imports: [PrimeNgModule, ReactiveFormsModule, RouterLink, ButtonModule, TooltipModule, OverlayBadgeModule],
+  imports: [PrimeNgModule, ReactiveFormsModule, RouterLink],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss'
 })
