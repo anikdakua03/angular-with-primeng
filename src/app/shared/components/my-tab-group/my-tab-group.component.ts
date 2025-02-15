@@ -1,7 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit, Type } from '@angular/core';
+import { MyTableComponent } from '@components/showcase/my-table/my-table.component';
 import { TabsModule } from 'primeng/tabs';
-import { MyTableComponent } from '../../../components/showcase/my-table/my-table.component';
 
 @Component({
   selector: 'app-my-tab-group',

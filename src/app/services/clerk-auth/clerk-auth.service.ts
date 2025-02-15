@@ -1,7 +1,7 @@
 import { Injectable, OnInit, signal } from '@angular/core';
 import { Clerk } from "@clerk/clerk-js";
 import { UserResource } from '@clerk/types';
-import { environment } from '../../../environments/environment';
+import { environment } from '@environments/environment';
 import { CLERK_OPTIONS } from './all-clerk-options';
 
 

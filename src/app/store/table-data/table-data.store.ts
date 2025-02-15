@@ -1,6 +1,6 @@
 import { patchState, signalStore, withMethods, withState } from "@ngrx/signals";
+import { IProduct } from "@shared/interfaces/product";
 import { withUndoRedo } from "../../custom-features/undo-redo/undo-redo.feature";
-import { IProduct } from "../../shared/interfaces/product";
 import { initialTableDataSlice } from "./table-data.slice";
 
 export const TableDataStore = signalStore(

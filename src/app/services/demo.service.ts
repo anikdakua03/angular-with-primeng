@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { environment } from '../../environments/environment';
-import { IApiResponse } from '../shared/interfaces/api-response';
-import { IPaginated, IProduct } from '../shared/interfaces/product';
+import { environment } from '@environments/environment';
+import { IApiResponse } from '@shared/interfaces/api-response';
+import { IPaginated, IProduct } from '@shared/interfaces/product';
 
 @Injectable({
   providedIn: 'root'

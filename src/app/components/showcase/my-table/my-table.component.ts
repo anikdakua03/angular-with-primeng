@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
-import { DemoService } from '../../../services/demo.service';
-import { PrimengTableWrapperComponent } from "../../../shared/components/primeng-table-wrapper/primeng-table-wrapper.component";
-import { IProduct } from '../../../shared/interfaces/product';
-import { PrimeNgModule } from '../../../shared/modules/prime-ng.module';
-import { TableDataStore } from '../../../store/table-data/table-data.store';
+import { DemoService } from '@services/demo.service';
+import { PrimengTableWrapperComponent } from "@shared/components/primeng-table-wrapper/primeng-table-wrapper.component";
+import { IProduct } from '@shared/interfaces/product';
+import { PrimeNgModule } from '@shared/modules/prime-ng.module';
+import { TableDataStore } from '@store/table-data/table-data.store';
 import { AddEditTableDataComponent } from "./add-edit-table-data/add-edit-table-data.component";
 
 @Component({

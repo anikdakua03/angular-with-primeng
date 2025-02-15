@@ -1,11 +1,11 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { ClerkAuthService } from '@services/clerk-auth/clerk-auth.service';
+import { NotificationsService } from '@services/notifications.service';
+import { ThemeService } from '@services/theme.service';
+import { PrimeNgModule } from '@shared/modules/prime-ng.module';
 import { MenuItem } from 'primeng/api';
-import { ClerkAuthService } from '../../services/clerk-auth/clerk-auth.service';
-import { NotificationsService } from '../../services/notifications.service';
-import { ThemeService } from '../../services/theme.service';
-import { PrimeNgModule } from '../../shared/modules/prime-ng.module';
 
 @Component({
     selector: 'app-header',

@@ -1,4 +1,4 @@
-import { IProduct } from "../shared/interfaces/product";
+import { IProduct } from "@shared/interfaces/product";
 
 export interface AppSlice {
     value: IProduct[];

@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { AngularSplitModule } from 'angular-split';
-import { PrimeNgModule } from '../../../shared/modules/prime-ng.module';
+import { PrimeNgModule } from '@shared/modules/prime-ng.module';
 
 @Component({
   selector: 'app-custom-splitter',
