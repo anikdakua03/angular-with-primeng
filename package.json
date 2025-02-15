@@ -22,12 +22,12 @@
     "@microsoft/signalr": "^8.0.7",
     "@ngrx/signals": "^19.0.0",
     "@primeng/themes": "^19.0.5",
-    "@tailwindcss/postcss": "^4.0.5",
+    "@tailwindcss/postcss": "^4.0.6",
     "angular-split": "^19.0.0",
-    "postcss": "^8.5.1",
+    "postcss": "^8.5.2",
     "primeng": "^19.0.5",
     "rxjs": "~7.8.0",
-    "tailwindcss": "^4.0.5",
+    "tailwindcss": "^4.0.6",
     "tslib": "^2.3.0"
   },
   "devDependencies": {

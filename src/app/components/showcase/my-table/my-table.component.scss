@@ -3,15 +3,7 @@
 //   font-family: "FontAwesome";
 // }
 
-::ng-deep .p-datatable .p-sortable-column .p-sortable-column-icon {
-  font-family: "FontAwesome";  /* Use FontAwesome or your preferred icon library */
-  content: "\f0dc";  /* Example: FontAwesome 'fa-arrow-up' icon */
-}
-
-::ng-deep .p-datatable .p-sortable-column.sort-asc .p-sortable-column-icon {
-  content: "\f0de"; /* FontAwesome 'fa-arrow-up' icon for ascending order */
-}
-
-::ng-deep .p-datatable .p-sortable-column.sort-desc .p-sortable-column-icon {
-  content: "\f0dd"; /* FontAwesome 'fa-arrow-down' icon for descending order */
+// If we need to override in specific component, can un
+::ng-deep .p-tooltip {
+  // --p-tooltip-background: #555555;
 }
