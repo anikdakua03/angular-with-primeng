@@ -63,16 +63,16 @@
 
   <!-- Context menu overlay -->
   <p-contextMenu #contextMenu [model]="contextMenuItems()">
-    <ng-template #item let-item>
+    <ng-template #contextItem let-contextItem>
       <a pRipple class="flex items-center px-4 py-2 cursor-pointer group">
-        <i [class]="item.iconClass">{{ item.icon }}</i>
+        <i [class]="contextItem.iconClass">{{ contextItem.icon }}</i>
 
         <span class="ml-2">
-          {{ item.label }}
+          {{ contextItem.label }}
         </span>
 
-        @if(item.badge) {
-        <p-badge class="ml-auto" [value]="item.badge" />
+        @if(contextItem.badge) {
+        <p-badge class="ml-auto" [value]="contextItem.badge" />
         }
       </a>
     </ng-template>

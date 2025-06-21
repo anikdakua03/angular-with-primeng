@@ -104,6 +104,11 @@ export class DynamicHierarchyComponent {
     this.cm.show(event);
   }
 
+  doTheAction(event: any) {
+    console.log('event action : ', event);
+
+  }
+
   private toggleAllRecursive(items: MenuItem[], expanded: boolean): MenuItem[] {
     return items.map((menuItem) => {
       menuItem.expanded = expanded;
@@ -221,6 +226,9 @@ export class DynamicHierarchyComponent {
         label: 'Add Item',
         icon: 'add',
         iconClass: "material-symbols-outlined",
+        command: () => {
+          // navigate via router link
+        }
       },
       {
         separator: true,
