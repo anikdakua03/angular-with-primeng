@@ -1,0 +1,80 @@
+<!-- 
+<p-button label="Toggle All" [text]="true" (onClick)="toggleAll()" />
+
+<p-button
+  label="Add new Node"
+  class=""
+  raised="true"
+  rounded="true"
+  [text]="true"
+  (onClick)="addNode()"
+/>
+<button
+  pButton
+  [iconPos]="'right'"
+  label="Add new Node"
+  class="bg-yellow-600 p-2 rounded-2xl"
+  [text]="true"
+  (onClick)="addNode()"
+>
+  <span pButtonLabel>Add new Node</span>
+  <span class="material-icons" pButtonIcon>vertical_split</span>
+</button>
+
+<div class="flex justify-center">
+  <p-panelmenu
+    [model]="items()"
+    [style]="{ width: '300px' }"
+    [multiple]="true"
+    (contextmenu)="processRightClickEvent2($event)"
+  />
+  // Context menu overlay 
+   <p-contextMenu #contextMenu [model]="contextMenuItems()"></p-contextMenu> 
+</div> -->
+
+<br />
+<h2 class="font-bold text-center p-4">Using Template</h2>
+<h2 class="font-bold text-center p-4">
+  Right click on item to show up context menu
+</h2>
+
+<!-- Using Template -->
+<div class="flex justify-center">
+  <p-panelmenu [model]="items()" class="w-full md:w-80">
+    <ng-template #item let-item>
+      <a
+        pRipple
+        class="flex items-center px-4 py-2 cursor-pointer group"
+        (contextmenu)="processRightClickEvent3($event, item)"
+      >
+        <!-- <i [class]="item.icon + ' text-primary group-hover:text-inherit'"></i> -->
+        <i [class]="item.iconClass">{{ item.icon }}</i>
+
+        <span class="ml-2">
+          {{ item.label }}
+        </span>
+
+        @if(item.badge) {
+        <p-badge class="ml-auto" [value]="item.badge" />
+        }
+      </a>
+    </ng-template>
+  </p-panelmenu>
+
+  <!-- Context menu overlay -->
+  <p-contextMenu #contextMenu [model]="contextMenuItems()">
+    <ng-template #item let-item>
+      <a pRipple class="flex items-center px-4 py-2 cursor-pointer group">
+        <i [class]="item.iconClass">{{ item.icon }}</i>
+
+        <span class="ml-2">
+          {{ item.label }}
+        </span>
+
+        @if(item.badge) {
+        <p-badge class="ml-auto" [value]="item.badge" />
+        }
+      </a>
+    </ng-template>
+  </p-contextMenu>
+</div>

@@ -26,6 +26,7 @@ import { ToastModule } from 'primeng/toast';
 import { ToggleSwitch } from 'primeng/toggleswitch';
 import { ToolbarModule } from 'primeng/toolbar';
 import { TooltipModule } from 'primeng/tooltip';
+import { ContextMenuModule } from 'primeng/contextmenu';
 
 @NgModule({
   declarations: [],
@@ -42,7 +43,7 @@ import { TooltipModule } from 'primeng/tooltip';
     SidebarModule,
     DropdownModule,
     PanelMenuModule,
-    DialogModule, SplitterModule, FluidModule, InputNumberModule, TooltipModule
+    DialogModule, SplitterModule, FluidModule, InputNumberModule, TooltipModule, ContextMenuModule
   ]
 })
 export class PrimeNgModule { }

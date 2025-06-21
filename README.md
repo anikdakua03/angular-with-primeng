@@ -26,3 +26,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 "# angular-with-primeng" 
+
+## Testing
+
+Ref
+
+[Angular Testing From Scratch](https://www.youtube.com/watch?v=66o_Th-FT7w)
+
+[Ref 2](https://www.youtube.com/watch?v=lbiOP-VLKGI)

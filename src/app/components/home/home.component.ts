@@ -9,8 +9,8 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  isLeftSidebarCollapsed = input.required<boolean>();
-  screenWidth = input.required<number>()
+  isLeftSidebarCollapsed = input<boolean>(true);
+  screenWidth = input<number>(window.innerWidth)
 
   sizeClass = computed(() => {
     const isLeftSidebarCollapsed = this.isLeftSidebarCollapsed();

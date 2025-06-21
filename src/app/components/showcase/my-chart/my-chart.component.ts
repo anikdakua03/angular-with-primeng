@@ -13,6 +13,7 @@ export class MyChartComponent {
   pieData: any;
   options: any;
 
+
   ngOnInit() {
     this.lineData = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -74,5 +75,9 @@ export class MyChartComponent {
         }
       }
     };
+  }
+
+  openDialog() {
+
   }
 }
