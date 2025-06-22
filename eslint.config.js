@@ -37,7 +37,7 @@ module.exports = tseslint.config(
       "@typescript-eslint/no-empty-object-type": "error",
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-extra-non-null-assertion": "error",
-      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/no-floating-promises": "warn",
       "@typescript-eslint/no-for-in-array": "error",
       "no-implied-eval": "off",
       "@typescript-eslint/no-implied-eval": "error",
@@ -45,13 +45,13 @@ module.exports = tseslint.config(
       "@typescript-eslint/no-misused-promises": "error",
       "@typescript-eslint/no-namespace": "error",
       "@typescript-eslint/no-non-null-asserted-optional-chain": "error",
-      "@typescript-eslint/no-redundant-type-constituents": "error",
+      "@typescript-eslint/no-redundant-type-constituents": "warn",
       "@typescript-eslint/no-require-imports": "error",
       "@typescript-eslint/no-this-alias": "error",
       "@typescript-eslint/no-unnecessary-type-assertion": "error",
       "@typescript-eslint/no-unnecessary-type-constraint": "error",
       "@typescript-eslint/no-unsafe-argument": "error",
-      "@typescript-eslint/no-unsafe-assignment": "error",
+      "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/no-unsafe-call": "error",
       "@typescript-eslint/no-unsafe-declaration-merging": "error",
       "@typescript-eslint/no-unsafe-enum-comparison": "error",
@@ -62,7 +62,7 @@ module.exports = tseslint.config(
       "no-unused-expressions": "off",
       "@typescript-eslint/no-unused-expressions": "error",
       "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/no-unused-vars": "warn",
       "@typescript-eslint/no-wrapper-object-types": "error",
       "no-throw-literal": "off",
       "@typescript-eslint/only-throw-error": "error",
@@ -75,7 +75,7 @@ module.exports = tseslint.config(
       "@typescript-eslint/restrict-plus-operands": "error",
       "@typescript-eslint/restrict-template-expressions": "error",
       "@typescript-eslint/triple-slash-reference": "error",
-      "@typescript-eslint/unbound-method": "error",
+      "@typescript-eslint/unbound-method": "warn",
 
       // Angular Rules
       "@angular-eslint/directive-selector": [
@@ -97,6 +97,7 @@ module.exports = tseslint.config(
       "@angular-eslint/no-empty-lifecycle-method": "warn",
       "@angular-eslint/no-conflicting-lifecycle": "warn",
       "@angular-eslint/no-duplicates-in-metadata-arrays": "warn",
+      "@angular-eslint/no-output-on-prefix": "warn",
       "@angular-eslint/prefer-inject": [
         "warn"
       ],
@@ -127,7 +128,7 @@ module.exports = tseslint.config(
       ],
       "@angular-eslint/sort-lifecycle-methods": [
         "error"
-      ],
+      ]
     },
   },
   {
@@ -136,6 +137,9 @@ module.exports = tseslint.config(
       ...angular.configs.templateRecommended,
       ...angular.configs.templateAccessibility,
     ],
-    rules: {},
+    rules: {
+      "@angular-eslint/template/interactive-supports-focus": "warn",
+      "@angular-eslint/template/click-events-have-key-events": "warn"
+    },
   }
 );

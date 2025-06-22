@@ -2,7 +2,7 @@ export interface AppState {
     configActive?: boolean;
     menuActive?: boolean;
     newsActive?: boolean;
-    announcement?: any;
+    announcement?: unknown;
     // preset?: string,
     // primary?: string,
     // surface?: string,

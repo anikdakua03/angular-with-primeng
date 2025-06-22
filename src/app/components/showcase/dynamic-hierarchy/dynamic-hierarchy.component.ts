@@ -1,4 +1,4 @@
-import { Component, signal, ViewChild } from '@angular/core';
+import { Component, signal, ViewChild, OnInit } from '@angular/core';
 import { PrimeNgModule, } from '@app/shared/modules/prime-ng.module';
 import { MenuItem, MenuItemCommandEvent } from 'primeng/api';
 import { ContextMenu } from 'primeng/contextmenu';
@@ -9,11 +9,11 @@ import { ContextMenu } from 'primeng/contextmenu';
   templateUrl: './dynamic-hierarchy.component.html',
   styleUrl: './dynamic-hierarchy.component.scss'
 })
-export class DynamicHierarchyComponent {
+export class DynamicHierarchyComponent implements OnInit {
   @ViewChild('contextMenu') cm!: ContextMenu;
 
-  items = signal<MenuItem[]>([]);
-  contextMenuItems = signal<MenuItem[]>([]);
+  readonly items = signal<MenuItem[]>([]);
+  readonly contextMenuItems = signal<MenuItem[]>([]);
 
   ngOnInit() {
     this.initializeTree();
@@ -104,7 +104,7 @@ export class DynamicHierarchyComponent {
     this.cm.show(event);
   }
 
-  doTheAction(event: any) {
+  doTheAction(event: unknown) {
     console.log('event action : ', event);
 
   }
