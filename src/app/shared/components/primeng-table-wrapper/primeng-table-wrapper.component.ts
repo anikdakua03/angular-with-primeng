@@ -11,26 +11,26 @@ import { TableModule } from 'primeng/table';
   styleUrl: './primeng-table-wrapper.component.scss'
 })
 export class PrimengTableWrapperComponent {
-  tableData = input.required<any[]>();
-  tableColumns = input.required<{ id: string, name: string }[]>();
-  tableDataKey = input.required<string>();
+  readonly tableData = input.required<unknown[]>();
+  readonly tableColumns = input.required<{ id: string, name: string }[]>();
+  readonly tableDataKey = input.required<string>();
 
-  headerName = input.required<string>();
-  emptyMessage = input.required<string>();
+  readonly headerName = input.required<string>();
+  readonly emptyMessage = input.required<string>();
 
-  headerCheckboxNeeded = input<boolean>(false);
-  isEditDeleteOnRowNeeded = input<boolean>(true);
-  isPaginatorRequired = input<boolean>(true);
-  rowHover = input<boolean>(true);
-  showCurrentPageReport = input<boolean>(true);
+  readonly headerCheckboxNeeded = input<boolean>(false);
+  readonly isEditDeleteOnRowNeeded = input<boolean>(true);
+  readonly isPaginatorRequired = input<boolean>(true);
+  readonly rowHover = input<boolean>(true);
+  readonly showCurrentPageReport = input<boolean>(true);
 
-  columnFilterFields = input<string[]>([]);
-  rowsPerPage = input<number>(10);
-  rowsOptionsPerPage = input<number[]>([]);
+  readonly columnFilterFields = input<string[]>([]);
+  readonly rowsPerPage = input<number>(10);
+  readonly rowsOptionsPerPage = input<number[]>([]);
 
-  onEditAction = output<any>();
-  onDeleteAction = output<any>();
-  onSelectedDataAction = output<any>();
+  onEditAction = output<unknown>();
+  onDeleteAction = output<unknown>();
+  onSelectedDataAction = output<unknown>();
 
-  selectedData!: any[] | null;
+  selectedData!: unknown[] | null;
 }

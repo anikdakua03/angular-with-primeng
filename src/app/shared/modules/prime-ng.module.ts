@@ -29,13 +29,13 @@ import { TooltipModule } from 'primeng/tooltip';
 import { ContextMenuModule } from 'primeng/contextmenu';
 
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     Select,
     SelectButton,
     ToggleSwitch,
   ],
+  declarations: [],
   exports: [
     CommonModule,
     ButtonModule, TableModule, CardModule, FloatLabelModule, ToastModule, TabsModule, ToolbarModule, IconFieldModule, SplitButtonModule, InputIconModule, SelectModule, SelectButton, InputTextModule, ToggleSwitch, BadgeModule, OverlayBadgeModule, AvatarModule, DrawerModule,

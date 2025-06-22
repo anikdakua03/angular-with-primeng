@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Component, inject, input, OnChanges, OnInit, output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DemoService } from '../../../../services/demo.service';
@@ -11,8 +13,9 @@ import { TableDataStore } from '../../../../store/table-data/table-data.store';
   styleUrl: './add-edit-table-data.component.scss'
 })
 export class AddEditTableDataComponent implements OnInit, OnChanges {
-  showAddEditDialog = input.required<boolean>();
-  selectedData = input<any | null>(null);
+  readonly showAddEditDialog = input.required<boolean>();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  readonly selectedData = input<any | null>(null);
 
   onShowAddEditDialogCloseClick = output();
   onShowAddEditDialogClick = output();
@@ -27,10 +30,6 @@ export class AddEditTableDataComponent implements OnInit, OnChanges {
   constructor(private fb: FormBuilder, private demoService: DemoService) {
   }
 
-  ngOnInit(): void {
-    // Initialize form
-    this.initializeForm();
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log("Checking selected data : ", this.selectedData());
@@ -47,6 +46,11 @@ export class AddEditTableDataComponent implements OnInit, OnChanges {
         thumbnail: this.selectedData().thumbnail,
       });
     }
+  }
+
+  ngOnInit(): void {
+    // Initialize form
+    this.initializeForm();
   }
 
   private initializeForm(): void {
@@ -70,10 +74,9 @@ export class AddEditTableDataComponent implements OnInit, OnChanges {
   addOrEditItem(): void {
     console.log("Updated form value :", this.addEditItemForm.value);
 
-    let allCurrentProducts = this.tableDataStore.products();
+    const allCurrentProducts = this.tableDataStore.products();
 
-    debugger
-    let foundIndex = allCurrentProducts.findIndex(a => a.id === this.selectedData().id);
+    const foundIndex = allCurrentProducts.findIndex(a => a.id === this.selectedData().id);
 
     // allCurrentProducts[foundIndex].brand = this.addEditItemForm.value.brand;
     // allCurrentProducts[foundIndex].category = this.addEditItemForm.value.category;

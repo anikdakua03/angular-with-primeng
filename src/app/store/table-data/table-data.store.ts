@@ -20,7 +20,7 @@ export const TableDataStore = signalStore(
         },
         editProduct: (oldIndex: number, newProduct: IProduct) => {
             const oldProducts = store.products;
-            debugger
+
             const newProducts = oldProducts().filter(a => a.id !== oldProducts()[oldIndex].id);
 
             patchState(store, { products: [...newProducts, newProduct] });

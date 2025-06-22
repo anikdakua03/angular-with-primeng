@@ -11,8 +11,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 export class AppComponent implements OnInit {
   title = 'angular-with-Primeng';
 
-  isLeftSidebarCollapsed = signal<boolean>(true);
-  screenWidth = signal<number>(window.innerWidth);
+  readonly isLeftSidebarCollapsed = signal<boolean>(true);
+  readonly screenWidth = signal<number>(window.innerWidth);
 
   @HostListener('window:resize')
   onResize() {
@@ -23,14 +23,14 @@ export class AppComponent implements OnInit {
     }
   }
 
-  constructor() {
-  }
-
   ngOnInit(): void {
     this.isLeftSidebarCollapsed.set(this.screenWidth() < 768);
   }
 
   changeIsLeftSidebarCollapsed(isLeftSidebarCollapsed: boolean): void {
     this.isLeftSidebarCollapsed.set(isLeftSidebarCollapsed);
+  }
+  some() {
+    console.log('')
   }
 }

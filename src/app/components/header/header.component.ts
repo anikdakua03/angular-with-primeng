@@ -13,7 +13,7 @@ import { MenuItem } from 'primeng/api';
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   items: MenuItem[] | undefined;
 
   themesMenu: { id: string, value: string }[] = [
@@ -37,13 +37,10 @@ export class HeaderComponent implements OnInit {
 
   themeGroup!: FormGroup;
 
-  notificationPanelVisible = signal(false);
+  readonly notificationPanelVisible = signal(false);
 
 
   constructor(private router: Router, public authService: ClerkAuthService, public notification: NotificationsService, public themeService: ThemeService) {
-  }
-
-  ngOnInit() {
   }
 
   openSignIn() {

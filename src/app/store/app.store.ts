@@ -6,7 +6,7 @@ export const AppStore = signalStore(
     { providedIn: 'root' },
     // initial state what will be
     withState(initialAppSlice),
-    withMethods((store) => ({
+    withMethods(() => ({
         // methods for global app store
     }))
 );
