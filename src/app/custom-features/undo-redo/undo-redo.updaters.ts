@@ -3,7 +3,7 @@ import { UndoRedoState } from "./undo-redo.state";
 /*
 This commit function will will be invoked when we undo, redo , or modify the state manually.
 */
-export function commit(state: UndoRedoState, payload: any): UndoRedoState {
+export function commit(state: UndoRedoState, payload: unknown): UndoRedoState {
     // if present state is null means it is starting now , so all past and future will be empty and present will be that payload.
     // Otherwise something is already there so we push the present state to the past and update the present as payload
     return state.present === null ?

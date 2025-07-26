@@ -1,4 +1,4 @@
-import { Injectable, OnInit, signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Clerk } from "@clerk/clerk-js";
 import { UserResource } from '@clerk/types';
 import { environment } from '@environments/environment';
@@ -8,7 +8,7 @@ import { CLERK_OPTIONS } from './all-clerk-options';
 @Injectable({
   providedIn: 'root'
 })
-export class ClerkAuthService implements OnInit {
+export class ClerkAuthService {
 
   key = environment.CLERK_PUBLISHABLE_KEY;
 
@@ -19,10 +19,6 @@ export class ClerkAuthService implements OnInit {
 
   constructor() {
     // this.initializeClerk();
-  }
-
-  ngOnInit(): void {
-    // this.updateUserState();
   }
 
   async initializeClerk() {

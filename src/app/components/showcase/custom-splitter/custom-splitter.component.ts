@@ -9,9 +9,9 @@ import { PrimeNgModule } from '@shared/modules/prime-ng.module';
   styleUrl: './custom-splitter.component.scss'
 })
 export class CustomSplitterComponent {
-  displayDialog = signal<boolean>(false);
+  readonly displayDialog = signal<boolean>(false);
 
-  cars: any[] = [
+  cars: { brand: string, model: string, year: number }[] = [
     { brand: 'Toyota', model: 'Corolla', year: 2020 },
     { brand: 'Ford', model: 'Focus', year: 2019 },
     { brand: 'BMW', model: '320i', year: 2021 },
@@ -29,7 +29,7 @@ export class CustomSplitterComponent {
     { brand: 'BMW6780', model: '320i', year: 2021 },
   ];
 
-  selectedCars!: any;
+  selectedCars!: unknown;
 
   showDialog() {
     this.displayDialog.set(true);

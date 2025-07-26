@@ -54,7 +54,7 @@ describe('PrimengTableWrapperComponent', () => {
   });
 
   it('should have correct table data passed in \'tableData\' input', () => {
-    const myTableData: any[] = [
+    const myTableData: { id: number, name: string }[] = [
       {
         id: 1,
         name: "Test 1"

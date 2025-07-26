@@ -10,8 +10,8 @@ import { TabsModule } from 'primeng/tabs';
   styleUrl: './my-tab-group.component.scss'
 })
 export class MyTabGroupComponent implements OnInit {
-  tabs: { title: string; value: number; content: Type<any> | string }[] = [];
-  currIndex: number = 2;
+  tabs: { title: string; value: number; content: Type<unknown> | string }[] = [];
+  currIndex = 2;
 
   ngOnInit() {
     this.tabs = [
@@ -43,7 +43,7 @@ export class MyTabGroupComponent implements OnInit {
     );
   }
 
-  removeThisTab(event: any, value: number) {
+  removeThisTab(event: unknown, value: number) {
     console.log("WHat I got ? ", event);
     console.log("WHat I got in value? ", value);
     this.tabs = this.tabs.filter(tab => tab.value !== value);  // Remove the tab based on value

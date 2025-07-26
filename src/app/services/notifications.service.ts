@@ -5,11 +5,11 @@ import { HubConnection, HubConnectionBuilder } from "@microsoft/signalr";
   providedIn: 'root'
 })
 export class NotificationsService {
-  allNotifications = signal<string[]>([]);
+  readonly allNotifications = signal<string[]>([]);
 
   private hubConnection!: HubConnection;
 
-  connectionURL: string = "https://localhost:7111/notifications";
+  connectionURL = "https://localhost:7111/notifications";
   // connectionURL: string = "http://localhost:5171/notifications";
 
   constructor() {

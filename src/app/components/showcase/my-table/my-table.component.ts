@@ -17,7 +17,7 @@ export class MyTableComponent {
 
   selectedData: IProduct | null = null;
 
-  showAddEditModal = signal<boolean>(false);
+  readonly showAddEditModal = signal<boolean>(false);
 
   cols = [
     // { id: 'id', name: 'Id' },

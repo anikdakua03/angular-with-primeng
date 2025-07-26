@@ -10,7 +10,7 @@ import { IPaginated, IProduct } from '@shared/interfaces/product';
 export class DemoService {
   private baseURL: string = environment.PUBLIC_API_BASE_URL;
 
-  products = signal<IProduct[]>([]);
+  readonly products = signal<IProduct[]>([]);
 
   allRandomProducts: IProduct[] = [
     {

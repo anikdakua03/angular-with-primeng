@@ -1,7 +1,7 @@
 export interface UndoRedoState {
-    readonly past: any[];
-    readonly present: any;
-    readonly future: any[];
+    readonly past: unknown[];
+    readonly present: unknown;
+    readonly future: unknown[];
 }
 
 export const initialUndoRedoState: UndoRedoState = {

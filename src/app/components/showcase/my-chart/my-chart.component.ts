@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChartModule } from 'primeng/chart';
 
 @Component({
@@ -7,11 +7,11 @@ import { ChartModule } from 'primeng/chart';
   templateUrl: './my-chart.component.html',
   styleUrl: './my-chart.component.scss'
 })
-export class MyChartComponent {
-  lineData: any;
-  barData: any;
-  pieData: any;
-  options: any;
+export class MyChartComponent implements OnInit {
+  lineData: unknown;
+  barData: unknown;
+  pieData: unknown;
+  options: unknown;
 
 
   ngOnInit() {
@@ -77,7 +77,7 @@ export class MyChartComponent {
     };
   }
 
-  openDialog() {
+  // openDialog() {
 
-  }
+  // }
 }

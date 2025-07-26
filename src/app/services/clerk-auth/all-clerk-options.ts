@@ -56,17 +56,17 @@ const signInTheme: SignInTheme = {
     elements: elements
 };
 
-const signInProp: SignInProps = {
-    forceRedirectUrl: "http://localhost:4200/showcase",
-    fallbackRedirectUrl: "http://localhost:4200/showcase",
-    signUpUrl: "string",
-    appearance: signInTheme,
-    afterSignOutUrl: "http://localhost:4200"
-};
+// const signInProp: SignInProps = {
+//     forceRedirectUrl: "http://localhost:4200/showcase",
+//     fallbackRedirectUrl: "http://localhost:4200/showcase",
+//     signUpUrl: "string",
+//     appearance: signInTheme,
+//     afterSignOutUrl: "http://localhost:4200"
+// };
 
-const signOutOptions: SignOutOptions = {
-    redirectUrl: "http://localhost:4200"
-}
+// const signOutOptions: SignOutOptions = {
+//     redirectUrl: "http://localhost:4200"
+// }
 
 const appearance: Appearance = {
     baseTheme: baseTheme,
